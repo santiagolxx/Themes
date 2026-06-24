@@ -34,13 +34,13 @@
     },
     "bg_image_blur": {
       "type": "string",
-      "description": "Desenfoque del fondo (ej: 8px). El launcher lo aplica como --bg-image-blur en el root."
+      "description": "Desenfoque del fondo (ej: 8px). Se aplica como --bg-image-blur en el root."
     },
     "bg_image_opacity": {
       "type": "number",
       "minimum": 0,
       "maximum": 1,
-      "description": "Opacidad del fondo, valor entre 0 y 1. El launcher lo aplica como --bg-image-opacity en el root."
+      "description": "Opacidad del fondo, valor entre 0 y 1. Se aplica como --bg-image-opacity en el root."
     },
     "bg_image_warning_key": {
       "type": "string",
@@ -69,7 +69,7 @@
         },
         "--bg-overlay": {
           "type": "string",
-          "description": "Fondo de overlays y modales (acepta rgba)"
+          "description": "Fondo de overlays y modales. Se usa en ModalBase como backdrop. (acepta rgba)"
         },
         "--bg-input": {
           "type": "string",
@@ -77,11 +77,11 @@
         },
         "--bg-sidebar-gradient": {
           "type": "string",
-          "description": "Gradiente de fondo de la barra lateral"
+          "description": "Gradiente de fondo de la barra lateral (linear-gradient)"
         },
         "--bg-card-gradient": {
           "type": "string",
-          "description": "Gradiente de fondo de tarjetas"
+          "description": "Gradiente de fondo de tarjetas (linear-gradient)"
         },
         "--text-primary": {
           "type": "string",
@@ -95,6 +95,10 @@
           "type": "string",
           "description": "Color de texto desactivado o sutil"
         },
+        "--text-accent": {
+          "type": "string",
+          "description": "Color de texto con acento (uso opcional del tema)"
+        },
         "--border": {
           "type": "string",
           "description": "Color de bordes (alias de --border-color)"
@@ -103,17 +107,21 @@
           "type": "string",
           "description": "Color de bordes"
         },
+        "--border-color-hover": {
+          "type": "string",
+          "description": "Color de borde al hacer hover (uso opcional del tema)"
+        },
         "--border-width": {
           "type": "string",
           "description": "Ancho de bordes (ej: 1px)"
         },
         "--border-radius": {
           "type": "string",
-          "description": "Radio de borde general (ej: 8px)"
+          "description": "Radio de borde general. Se usa en modal principal. (ej: 8px)"
         },
         "--border-radius-sm": {
           "type": "string",
-          "description": "Radio de borde pequeño (ej: 4px)"
+          "description": "Radio de borde pequeño. Se usa en botones, inputs, selects. (ej: 4px)"
         },
         "--border-radius-lg": {
           "type": "string",
@@ -125,19 +133,27 @@
         },
         "--accent-rgb": {
           "type": "string",
-          "description": "Acento en formato RGB sin paréntesis, para uso con rgba() (ej: 245,168,106)"
+          "description": "Acento en formato RGB sin paréntesis para usar con rgba() (ej: 255,255,255)"
         },
         "--accent-hover": {
           "type": "string",
           "description": "Color de acento al hacer hover"
         },
+        "--accent-active": {
+          "type": "string",
+          "description": "Color de acento al hacer clic (uso opcional del tema)"
+        },
         "--accent-primary": {
           "type": "string",
-          "description": "Color de acento primario (puede diferir de --accent)"
+          "description": "Color de acento primario (puede diferir de --accent). Se usa en componentes como ScreenshotsTab."
         },
         "--accent-text": {
           "type": "string",
           "description": "Color de texto sobre fondo de acento"
+        },
+        "--accent-subtle": {
+          "type": "string",
+          "description": "Versión sutil/translúcida del acento, ej rgba(...) (uso opcional del tema)"
         },
         "--shadow-sm": {
           "type": "string",
@@ -147,17 +163,25 @@
           "type": "string",
           "description": "Sombra mediana (box-shadow)"
         },
+        "--shadow-lg": {
+          "type": "string",
+          "description": "Sombra grande (box-shadow). Se usa en modales."
+        },
         "--glow-accent": {
           "type": "string",
-          "description": "Brillo del color de acento (box-shadow)"
+          "description": "Brillo del color de acento (box-shadow). Se usa en animaciones del modal de auth."
+        },
+        "--glow-accent-strong": {
+          "type": "string",
+          "description": "Brillo intenso del acento (uso opcional del tema)"
         },
         "--glow-error": {
           "type": "string",
-          "description": "Brillo del color de error (box-shadow)"
+          "description": "Brillo del color de error (box-shadow). Se usa en animaciones del modal de auth."
         },
         "--glow-success": {
           "type": "string",
-          "description": "Brillo del color de éxito (box-shadow)"
+          "description": "Brillo del color de éxito (box-shadow). Se usa en animaciones del modal de auth."
         },
         "--color-success": {
           "type": "string",
@@ -165,7 +189,7 @@
         },
         "--color-success-rgb": {
           "type": "string",
-          "description": "Color de éxito en formato RGB sin paréntesis (ej: 95,184,106)"
+          "description": "Color de éxito en formato RGB sin paréntesis (ej: 63,185,80)"
         },
         "--color-error": {
           "type": "string",
@@ -173,7 +197,7 @@
         },
         "--color-error-rgb": {
           "type": "string",
-          "description": "Color de error en formato RGB sin paréntesis (ej: 232,90,90)"
+          "description": "Color de error en formato RGB sin paréntesis (ej: 248,81,73)"
         },
         "--color-warning": {
           "type": "string",
@@ -181,39 +205,75 @@
         },
         "--color-warning-rgb": {
           "type": "string",
-          "description": "Color de advertencia en formato RGB sin paréntesis (ej: 232,168,64)"
+          "description": "Color de advertencia en formato RGB sin paréntesis (ej: 210,153,34)"
+        },
+        "--color-info": {
+          "type": "string",
+          "description": "Color informativo (uso opcional del tema)"
+        },
+        "--color-info-rgb": {
+          "type": "string",
+          "description": "Color informativo en RGB sin paréntesis (uso opcional del tema)"
         },
         "--color-status-starting": {
           "type": "string",
-          "description": "Color del estado 'iniciando' de un servidor"
+          "description": "Color del estado 'iniciando'"
         },
         "--color-status-started": {
           "type": "string",
-          "description": "Color del estado 'iniciado' de un servidor"
+          "description": "Color del estado 'iniciado'"
+        },
+        "--color-status-stopped": {
+          "type": "string",
+          "description": "Color del estado 'detenido' (uso opcional del tema)"
+        },
+        "--color-status-error": {
+          "type": "string",
+          "description": "Color del estado 'error' (uso opcional del tema)"
         },
         "--clr-loader-vanilla": {
           "type": "string",
-          "description": "Color del loader para Vanilla"
+          "description": "Color del badge loader para Vanilla"
         },
         "--clr-loader-fabric": {
           "type": "string",
-          "description": "Color del loader para Fabric"
+          "description": "Color del badge loader para Fabric"
         },
         "--clr-loader-forge": {
           "type": "string",
-          "description": "Color del loader para Forge"
+          "description": "Color del badge loader para Forge"
         },
         "--clr-loader-quilt": {
           "type": "string",
-          "description": "Color del loader para Quilt"
+          "description": "Color del badge loader para Quilt"
         },
         "--icon-filter": {
           "type": "string",
-          "description": "Filtro CSS para iconos normales (ej: invert(90%) sepia(10%))"
+          "description": "Filtro CSS para iconos normales (ej: invert(1) o sepia+saturate+hue-rotate)"
+        },
+        "--icon-filter-accent": {
+          "type": "string",
+          "description": "Filtro CSS para iconos con acento (uso opcional del tema)"
+        },
+        "--icon-filter-success": {
+          "type": "string",
+          "description": "Filtro CSS para iconos de éxito (uso opcional del tema)"
         },
         "--icon-filter-error": {
           "type": "string",
           "description": "Filtro CSS para iconos de error"
+        },
+        "--icon-filter-warning": {
+          "type": "string",
+          "description": "Filtro CSS para iconos de advertencia (uso opcional del tema)"
+        },
+        "--icon-filter-info": {
+          "type": "string",
+          "description": "Filtro CSS para iconos informativos (uso opcional del tema)"
+        },
+        "--icon-filter-muted": {
+          "type": "string",
+          "description": "Filtro CSS para iconos desactivados (uso opcional del tema)"
         },
         "--sidebar-width": {
           "type": "string",
@@ -227,26 +287,62 @@
           "type": "string",
           "description": "Color del thumb del scrollbar"
         },
+        "--scrollbar-thumb-hover": {
+          "type": "string",
+          "description": "Color del thumb del scrollbar al hover. Fallback a --text-secondary si no se define."
+        },
         "--font-family": {
           "type": "string",
-          "description": "Familia de fuente principal (ej: Cantarell, sans-serif)"
+          "description": "Familia de fuente principal (ej: Cantarell, sans-serif). Se aplica al body."
         },
         "--font-size-base": {
           "type": "string",
-          "description": "Tamaño de fuente base (ej: 14px)"
+          "description": "Tamaño de fuente base en el html. Todos los rem escalan con esto. (ej: 14px)"
         },
         "--font-size-sm": {
           "type": "string",
-          "description": "Tamaño de fuente pequeño (ej: 12px)"
+          "description": "Tamaño de fuente pequeño (ej: 12px). Definido pero no usado internamente; disponible para componentes personalizados."
         },
         "--font-size-lg": {
           "type": "string",
-          "description": "Tamaño de fuente grande (ej: 16px)"
+          "description": "Tamaño de fuente grande (ej: 16px). Definido pero no usado internamente; disponible para componentes personalizados."
+        },
+        "--font-loaded": {
+          "type": "string",
+          "description": "Lo maneja el launcher automáticamente. Se setea en 0 mientras se cargan fuentes personalizadas y pasa a 1 cuando terminan. Podés usarlo para transiciones: body { opacity: var(--font-loaded, 1); transition: opacity 0.3s; }"
+        },
+        "--bg-image": {
+          "type": "string",
+          "description": "Lo setea el launcher automáticamente desde bg_image. No hace falta definirlo manualmente."
+        },
+        "--bg-image-blur": {
+          "type": "string",
+          "description": "Lo setea el launcher automáticamente desde bg_image_blur. No hace falta definirlo manualmente."
+        },
+        "--bg-image-opacity": {
+          "type": "string",
+          "description": "Lo setea el launcher automáticamente desde bg_image_opacity. No hace falta definirlo manualmente."
+        },
+        "--bg-image-loaded": {
+          "type": "string",
+          "description": "Lo maneja el launcher. Pasa de 0 a 1 cuando la imagen de fondo terminó de cargar. Se usa en transition: opacity de layout.css."
+        },
+        "--transition-fast": {
+          "type": "string",
+          "description": "Duración de transición rápida (ej: 0.12s ease). Uso opcional del tema."
+        },
+        "--transition-base": {
+          "type": "string",
+          "description": "Duración de transición base (ej: 0.2s ease). Uso opcional del tema."
+        },
+        "--transition-slow": {
+          "type": "string",
+          "description": "Duración de transición lenta (ej: 0.35s ease). Uso opcional del tema."
         }
       },
       "additionalProperties": {
         "type": "string",
-        "description": "Variable CSS adicional"
+        "description": "Variable CSS adicional libre. El launcher las inyecta al root tal cual. Útil para variables experimentales o específicas de un tema."
       }
     }
   },
